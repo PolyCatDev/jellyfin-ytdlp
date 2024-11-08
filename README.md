@@ -5,7 +5,7 @@ A a modified [LinuxServer Jellyfin Image](https://docs.linuxserver.io/images/doc
 > [!TIP]
 > A new image will be availabe every week on a monday at 3 am Europe/Bucharest time
 
-### Docker Compose
+### Docker Compose Example
 
 ```yaml
 services:
