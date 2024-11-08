@@ -4,6 +4,10 @@ on:
     schedule:
         - cron: "0 15 * * 1"
 
+    push:
+        paths-ignore: # don't rebuild if only documentation has changed
+            - "**.md"
+
 jobs:
     build_and_publish:
         runs-on: ubuntu-latest
@@ -11,6 +15,6 @@ jobs:
             - uses: actions/checkout@v3
             - name: Build and push the image
               run: |
-                docker login --username PolyCatDev --password ${{secrets.GH_TOKEN}} ghcr.io
-                docker build . --tag ghcr.io/polycatdev/jellyfin-ytdlp:latest
-                docker push ghcr.io/polycatdev/jellyfin-ytdlp:latest
+                  docker login --username PolyCatDev --password ${{secrets.GH_TOKEN}} ghcr.io
+                  docker build . --tag ghcr.io/polycatdev/jellyfin-ytdlp:latest
+                  docker push ghcr.io/polycatdev/jellyfin-ytdlp:latest
