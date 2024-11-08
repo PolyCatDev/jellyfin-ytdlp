@@ -1,6 +1,6 @@
 # jellyfin-ytdlp
 
-A a modified [Jellyfin Image](https://hub.docker.com/r/jellyfin/jellyfin/) with [yt-dlp](https://github.com/yt-dlp/yt-dlp) added on top of it for the [jellyfin-youtube-metadata-plugin](https://github.com/ankenyr/jellyfin-youtube-metadata-plugin)
+A a modified [LinuxServer Jellyfin Image](https://docs.linuxserver.io/images/docker-jellyfin/) with [yt-dlp](https://github.com/yt-dlp/yt-dlp) added on top of it for the [jellyfin-youtube-metadata-plugin](https://github.com/ankenyr/jellyfin-youtube-metadata-plugin)
 
 > [!TIP]
 > A new image will be availabe every week on a monday at 3 AM Europe/Bucharest time
