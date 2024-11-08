@@ -1,0 +1,16 @@
+name: jellyfin-ytdlp publish
+
+on:
+    schedule:
+        - cron: "0 15 * * 1"
+
+jobs:
+    build_and_publish:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Build and push the image
+              run: |
+                docker login --username PolyCatDev --password ${{secrets.GH_TOKEN}} ghcr.io
+                docker build . --tag ghcr.io/polycatdev/jellyfin-ytdlp:latest
+                docker push ghcr.io/polycatdev/jellyfin-ytdlp:latest
