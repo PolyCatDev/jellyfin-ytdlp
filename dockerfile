@@ -1,4 +1,4 @@
-FROM linuxserver/jellyfin:latest
+FROM lscr.io/linuxserver/jellyfin:latest
 
 LABEL org.opencontainers.image.source https://github.com/PolyCatDev/jellyfin-ytdlp
 
