@@ -5,14 +5,14 @@ on:
         - cron: "0 15 * * 1"
 
     push:
-        paths-ignore: # don't rebuild if only documentation has changed
+        paths-ignore:
             - "**.md"
 
 jobs:
     build_and_publish:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
             - name: Build and push the image
               run: |
                   docker login --username PolyCatDev --password ${{secrets.GH_TOKEN}} ghcr.io
