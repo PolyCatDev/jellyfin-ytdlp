@@ -20,7 +20,7 @@ services:
     volumes:
       - ./config:/config
     ports:
-      - 3020:8096
+      - 8096:8096
       # - 8920:8920 #optional
       # - 7359:7359/udp #optional
       # - 1900:1900/udp #optional
