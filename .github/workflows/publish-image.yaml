@@ -18,3 +18,8 @@ jobs:
                   docker login --username PolyCatDev --password ${{secrets.GH_TOKEN}} ghcr.io
                   docker build . --tag ghcr.io/polycatdev/jellyfin-ytdlp:latest
                   docker push ghcr.io/polycatdev/jellyfin-ytdlp:latest
+
+            - name: Send Notification
+              if: failure()
+              run: |
+                  curl -d "jellyfin-ytdlp action failed" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
