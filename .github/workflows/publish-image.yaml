@@ -3,7 +3,6 @@ name: jellyfin-ytdlp publish
 on:
     schedule:
         - cron: "0 15 * * 1"
-
     push:
         paths-ignore:
             - "**.md"
@@ -13,16 +12,19 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+
             - name: Build and push the image
               run: |
                   docker login --username PolyCatDev --password ${{secrets.GH_TOKEN}} ghcr.io
                   docker build . --tag ghcr.io/polycatdev/jellyfin-ytdlp:latest
                   docker push ghcr.io/polycatdev/jellyfin-ytdlp:latest
 
-            - name: Send Notification
+            - name: Send failure notification
+              if: failure()
               run: |
-                if failure(); then
-                  curl -d "jellyfin-ytdlp action failed" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
-                else
-                  curl -d "jellyfin-ytdlp action succeeded" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
-                fi
+                curl -d "jellyfin-ytdlp action failed" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
+
+            - name: Send success notification
+              if: success()
+              run: |
+                curl -d "jellyfin-ytdlp action succeeded" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
