@@ -22,9 +22,9 @@ jobs:
             - name: Send failure notification
               if: failure()
               run: |
-                curl -d "jellyfin-ytdlp action failed" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
+                curl -s -o /dev/null -d "jellyfin-ytdlp action failed" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
 
             - name: Send success notification
               if: success()
               run: |
-                curl -d "jellyfin-ytdlp action succeeded" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
+                curl -s -o /dev/null -d "jellyfin-ytdlp action succeeded" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
