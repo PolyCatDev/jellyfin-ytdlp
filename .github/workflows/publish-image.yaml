@@ -20,6 +20,9 @@ jobs:
                   docker push ghcr.io/polycatdev/jellyfin-ytdlp:latest
 
             - name: Send Notification
-              if: failure()
               run: |
+                if failure(); then
                   curl -d "jellyfin-ytdlp action failed" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
+                else
+                  curl -d "jellyfin-ytdlp action succeeded" ${{secrets.NOTIFY_URL}} -u ${{secrets.USER}}
+                fi
